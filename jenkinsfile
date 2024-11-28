@@ -58,20 +58,21 @@ pipeline {
                        sed -i 's/IMAGE_VERSION/${appVersion}/g' values-${environment}.yaml
                        helm upgrade --install ${component} -n ${project} -f values-${environment}.yaml . 
                    """ 
+                }
             }
         }
-    }
 
-    post {
-        always{
-            echo "This sections runs always"
-            deleteDir()
-        }
-        success{
-            echo "This section run when pipeline success"
-        }
-        failure{
-            echo "This section run when pipeline failure"
+        post {
+            always{
+                echo "This sections runs always"
+                deleteDir()
+            }
+            success{
+                echo "This section run when pipeline success"
+            }
+            failure{
+                echo "This section run when pipeline failure"
+            }
         }
     }
 }
