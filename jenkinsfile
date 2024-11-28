@@ -14,7 +14,7 @@ pipeline {
         account_id = '203918861424'
         project = 'expense'
         environment = 'dev'
-        component = 'frontend'
+        component = 'backend'
     }
 
     stages {
@@ -42,7 +42,7 @@ pipeline {
                 docker build -t ${account_id}.dkr.ecr.us-east-1.amazonaws.com/${project}/${environment}/${component}:${appVersion} .
 
                 docker images
-                
+
                 docker push ${account_id}.dkr.ecr.us-east-1.amazonaws.com/${project}/${environment}/${component}:${appVersion} .
                 """
             }
